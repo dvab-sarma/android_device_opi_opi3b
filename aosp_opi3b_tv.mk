@@ -1,17 +1,18 @@
 #
 # Copyright (C) 2021-2023 KonstaKANG
+# Copyright (C) 2025 Venkata Atchuta Bheemeswara Sarma Darbha
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
 # Inherit device configuration
-$(call inherit-product, device/brcm/rpi5/device.mk)
+$(call inherit-product, device/opi/opi3b/device.mk)
 
 PRODUCT_AAPT_PREF_CONFIG := tvdpi
 PRODUCT_CHARACTERISTICS := tv
 
 $(call inherit-product, device/google/atv/products/atv_base.mk)
-$(call enforce-product-packages-exist,)
+$(call enforce-product-packages-exist,com.android.ranging)
 
 # Android TV
 PRODUCT_PACKAGES += \
@@ -31,14 +32,14 @@ PRODUCT_COPY_FILES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
-    AndroidTvRpiOverlay \
-    BluetoothRpiOverlay \
-    SettingsProviderTvRpiOverlay \
-    WifiRpiOverlay
+    AndroidTvOpiOverlay \
+    BluetoothOpiOverlay \
+    SettingsProviderTvOpiOverlay \
+    WifiOpiOverlay
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_DEVICE := rpi5
-PRODUCT_NAME := aosp_rpi5_tv
-PRODUCT_BRAND := Raspberry
-PRODUCT_MODEL := Pi 5
-PRODUCT_MANUFACTURER := Raspberry
+PRODUCT_DEVICE := opi3b
+PRODUCT_NAME := aosp_opi3b_tv
+PRODUCT_BRAND := Orange
+PRODUCT_MODEL := Pi 3B
+PRODUCT_MANUFACTURER := Orange pi

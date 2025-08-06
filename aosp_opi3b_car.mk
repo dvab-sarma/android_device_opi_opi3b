@@ -1,13 +1,14 @@
 #
 # Copyright (C) 2021-2023 KonstaKANG
+# Copyright (C) 2025 Venkata Atchuta Bheemeswara Sarma Darbha
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
 # Inherit device configuration
-$(call inherit-product, device/opi/rpi5/device.mk)
+$(call inherit-product, device/opi/opi3b/device.mk)
 
-DEVICE_PATH_CAR := device/opi/rpi5/car
+DEVICE_PATH_CAR := device/opi/opi3b/car
 
 PRODUCT_AAPT_CONFIG := normal mdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
@@ -15,7 +16,7 @@ PRODUCT_CHARACTERISTICS := automotive,nosdcard
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
-$(call enforce-product-packages-exist,Bluetooth Keyguard Launcher2 OverviewApp RotaryIME RotaryPlayground libnfc_ndef libvariablespeed pppd)
+$(call enforce-product-packages-exist,Bluetooth Keyguard Launcher2 OverviewApp RotaryIME RotaryPlayground com.android.ranging libnfc_ndef libvariablespeed pppd)
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -84,11 +85,11 @@ include packages/services/Car/car_product/occupant_awareness/OccupantAwareness.m
 
 # Overlays
 PRODUCT_PACKAGES += \
-    AndroidRpiOverlay \
-    BluetoothRpiOverlay \
-    CarServiceRpiOverlay \
-    SettingsProviderRpiOverlay \
-    WifiRpiOverlay
+    AndroidOpiOverlay \
+    BluetoothOpiOverlay \
+    CarServiceOpiOverlay \
+    SettingsProviderOpiOverlay \
+    WifiOpiOverlay
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -100,8 +101,8 @@ PRODUCT_PACKAGES += \
     android.hardware.automotive.vehicle@V3-default-service
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_DEVICE := rpi5
-PRODUCT_NAME := aosp_rpi5_car
-PRODUCT_BRAND := Raspberry
-PRODUCT_MODEL := Pi 5
-PRODUCT_MANUFACTURER := Raspberry
+PRODUCT_DEVICE := opi3b
+PRODUCT_NAME := aosp_opi3b_car
+PRODUCT_BRAND := Orange
+PRODUCT_MODEL := Pi 3b
+PRODUCT_MANUFACTURER := Orange
